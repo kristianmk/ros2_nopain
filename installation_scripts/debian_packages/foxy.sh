@@ -26,3 +26,9 @@ then
 else
     sudo apt install ros-foxy-desktop
 fi
+
+sudo apt install python3-rosdep2 -y
+
+echo "Finished!"
+echo "Your foxy distribution should be located in /opt/ros/"
+exit 0
