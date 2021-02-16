@@ -4,10 +4,10 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
 
 mkdir -p ~/ros2_dashing
-cd ~/Downloads
+cd ~/
 wget https://github.com/ros2/ros2/releases/download/release-dashing-20201202/ros2-dashing-20201202-linux-bionic-armhf.tar.bz2
 cd ~/ros2_dashing
-tar xf ~/Downloads/ros2-dashing-20201202-linux-bionic-armhf.tar.bz2
+tar xf ~/ros2-dashing-20201202-linux-bionic-armhf.tar.bz2
 
 sudo apt update
 sudo apt install -y python-rosdep
