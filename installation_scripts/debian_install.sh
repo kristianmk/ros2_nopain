@@ -48,7 +48,7 @@ if [ $ros2_distribution == 'eloquent' ] && [ $ros2_version == 'desktop' ]
 then sudo apt install ros-eloquent-desktop
 fi
 
-if [ $ros2_distribution == 'foxy' ] && [ $ros2_version == 'desktop' ]
+if [ $ros2_distribution == 'eloquent' ] && [ $ros2_version == 'base' ]
 then sudo apt install ros-eloquent-ros-base
 fi
 
