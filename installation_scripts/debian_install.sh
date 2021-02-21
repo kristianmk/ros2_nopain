@@ -54,6 +54,7 @@ fi
 
 # Install some neat dependencies
 sudo apt update && sudo apt install -y \
+    python3-rosdep \
     python3-rosdep2 \
     build-essential \
     cmake \
@@ -64,6 +65,9 @@ sudo apt update && sudo apt install -y \
     python3-setuptools \
     python3-vcstool \
     wget
+    
+sudo rosdep init
+rosdep update
 
 echo "Finished!"
 echo "Your $ros2_distribution distribution ($ros2_version version) should be located in /opt/ros/"
