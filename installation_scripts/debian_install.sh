@@ -1,25 +1,8 @@
 # Shell script for installing ROS 2
-# Works with: foxy
+# Works with: foxy, eloquent
 # ------------------------------------
 
-# Update locales
-sudo apt update && sudo apt install locales
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# Add key to apt
-sudo apt update && sudo apt install curl gnupg2 lsb-release
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-
-# Install correct package for system
-sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
-
-# Update apt
-sudo apt update
-
-
-# Install correct ROS 2 version
+# Prompt user for ROS 2 version
 
 ## Prompt user for distribution
 echo "Distribution"
@@ -35,27 +18,49 @@ echo "* base"
 read -p "Select: " ros2_version
 echo ""
 
+# Check if valid version
+if [ $ros2_distribution != 'foxy' ] || [ $ros2_version != 'eloquent' ]
+then 
+    echo "Distribution invalid: $ros2_distribution"
+    exit 0
+fi
+
+# Update locales
+sudo apt update && sudo apt install locales -y
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Add key to apt
+sudo apt update && sudo apt install curl gnupg2 lsb-release -y
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+# Install correct package for system
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+
+# Update apt
+sudo apt update
+
 ## Install
 if [ $ros2_distribution == 'foxy' ] && [ $ros2_version == 'desktop' ]
-then sudo apt install ros-foxy-desktop
+then sudo apt install ros-foxy-desktop -y
 fi
 
 if [ $ros2_distribution == 'foxy' ] && [ $ros2_version == 'base' ]
-then sudo apt install ros-foxy-base
+then sudo apt install ros-foxy-base -y
 fi
 
 if [ $ros2_distribution == 'eloquent' ] && [ $ros2_version == 'desktop' ]
-then sudo apt install ros-eloquent-desktop
+then sudo apt install ros-eloquent-desktop -y
 fi
 
 if [ $ros2_distribution == 'eloquent' ] && [ $ros2_version == 'base' ]
-then sudo apt install ros-eloquent-ros-base
+then sudo apt install ros-eloquent-ros-base -y
 fi
 
 # Install some neat dependencies
 sudo apt update && sudo apt install -y \
     python3-rosdep \
-    python3-rosdep2 \
     build-essential \
     cmake \
     python3-colcon-common-extensions \
