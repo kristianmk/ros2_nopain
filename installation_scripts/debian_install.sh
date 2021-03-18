@@ -47,7 +47,7 @@ then sudo apt install ros-foxy-desktop -y
 fi
 
 if [ $ros2_distribution == 'foxy' ] && [ $ros2_version == 'base' ]
-then sudo apt install ros-foxy-base -y
+then sudo apt install ros-foxy-ros-base -y
 fi
 
 if [ $ros2_distribution == 'eloquent' ] && [ $ros2_version == 'desktop' ]
