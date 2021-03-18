@@ -19,7 +19,7 @@ read -p "Select: " ros2_version
 echo ""
 
 # Check if valid version
-if [ $ros2_distribution != 'foxy' ] || [ $ros2_distribution != 'eloquent' ]
+if [ $ros2_distribution != 'foxy' ] && [ $ros2_distribution != 'eloquent' ]
 then 
     echo "Distribution invalid: $ros2_distribution"
     exit 0
