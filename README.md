@@ -2,10 +2,10 @@
 
 Script for installing ROS2 on Ubuntu with dependencies.
 
-**Tested with**
+**Tested and works with**
 * Ubuntu 20.04 and ROS2 Foxy
 * Ubuntu 20.04 and ROS2 Eloquent
-
+* Ubuntu 18.04 and ROS2 Eloquent
 
 ## How to use
 
